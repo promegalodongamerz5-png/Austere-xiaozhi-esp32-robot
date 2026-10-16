@@ -1,0 +1,33 @@
+name: Build Companion Firmware
+
+# Manual one-click build of the ESP32 DevKit v1 companion firmware.
+# Output: artifact "companion-firmware" containing merged-binary.bin
+# (flash at address 0x0).
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: espressif/idf:v6.1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Build
+        shell: bash
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          python scripts/build.py bread-compact-esp32-companion --name bread-compact-esp32-companion
+
+      - name: Upload firmware
+        uses: actions/upload-artifact@v4
+        with:
+          name: companion-firmware
+          path: |
+            build/merged-binary.bin
+            releases/*.zip

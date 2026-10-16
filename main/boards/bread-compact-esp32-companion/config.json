@@ -1,0 +1,9 @@
+{
+    "type": "bread-compact-esp32-companion",
+    "target": "esp32",
+    "builds": [
+        {
+            "name": "bread-compact-esp32-companion"
+        }
+    ]
+}

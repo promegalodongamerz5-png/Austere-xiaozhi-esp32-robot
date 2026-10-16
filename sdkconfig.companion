@@ -1,0 +1,5 @@
+# Selects the "Bread Compact ESP32 Companion" board (OLED face + 3 servos).
+# Used by the VS Code ESP-IDF extension through .vscode/settings.json
+# (idf.sdkconfigDefaults). From a terminal you can use instead:
+#   python3 scripts/build.py bread-compact-esp32-companion
+CONFIG_BOARD_TYPE_BREAD_COMPACT_ESP32_COMPANION=y
